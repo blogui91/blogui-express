@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  div
+    table.table
+      tbody
+        tr
+          th ID 
+          th First name
+          th Last name 
+          th Email
+          th Status
+      tbody
+        each user in users
+          tr
+            td #{user.id}
+            td #{user.first_name}
+            td #{user.last_name}
+            td #{user.email}
+            td #{user.enabled}
