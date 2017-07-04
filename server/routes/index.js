@@ -7,9 +7,7 @@ let User = new UserRepository();
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
-  let users = await User.findAll();
-
-  res.render('index', {'users': users, title: 'Express' });
+  res.render('index', {title: 'Express' });
 });
 
 module.exports = router;

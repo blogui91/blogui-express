@@ -3,7 +3,7 @@ let UserValidator = require('../validators/User.validator')
 class UserRepository extends BaseRepository
 {
     constructor(){
-        super('user', UserValidator)
+        super('users', UserValidator)
     }
 }
 

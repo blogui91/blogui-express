@@ -1,4 +1,4 @@
-var Models  = require('../models');
+var DB  = require('../models');
 
 class Repository
 {
@@ -8,7 +8,7 @@ class Repository
     }
 
     createModel(){
-        return Models[this.model]
+        return DB[this.model]
     }
 
     async create(body){
@@ -48,9 +48,11 @@ class Repository
 
     async findAll(){
         try {
+            console.log(this.createModel())
             let query = this.createModel().findAll({ });
             return query
         }catch(error){
+            console.log(error)
             throw error
         }
     }
