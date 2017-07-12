@@ -1,10 +1,12 @@
-let BaseRepository = require('./Base.repository');
-let UserValidator = require('../validators/User.validator')
+import BaseRepository from './Base.repository'
+import UserValidator from '../validators/User.validator'
+import UserModel from '../models/user'
+
 class UserRepository extends BaseRepository
 {
     constructor(){
-        super('users', UserValidator)
+        super(UserModel, UserValidator)
     }
 }
 
-module.exports = UserRepository
+export default UserRepository

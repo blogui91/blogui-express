@@ -1,5 +1,3 @@
-var DB  = require('../models');
-
 class Repository
 {
     constructor(model, validator){
@@ -8,7 +6,11 @@ class Repository
     }
 
     createModel(){
-        return DB[this.model]
+        return this.model
+    }
+
+    createAndFill(body){
+        return new this.model(body)
     }
 
     async create(body){
@@ -19,7 +21,10 @@ class Repository
         }
         if(validator.passes()){
             try{
-                let transaction = await this.createModel().create(body)
+                let resource = this.createAndFill(body);
+                console.log("Resource:   ", body)
+                //let transaction = await this.createModel().create(body)
+                let transaction = await resource.save();
                 response.resource = transaction
                 return response
             }catch(error){
@@ -34,10 +39,8 @@ class Repository
 
     async find(id){
         try {
-            let query = this.createModel().find({
-                where: {
-                    id: id
-                }
+            let query = await this.createModel().findOne({
+                 _id: id
             });
             return query
         }catch(error){
@@ -48,8 +51,7 @@ class Repository
 
     async findAll(){
         try {
-            console.log(this.createModel())
-            let query = this.createModel().findAll({ });
+            let query = await this.createModel().find({ });
             return query
         }catch(error){
             console.log(error)
@@ -59,11 +61,7 @@ class Repository
 
     async update(id, data){
         try{
-            let transaction = this.createModel().update(data,{
-                                where: {
-                                    id: id
-                                }
-                            });
+            let transaction = await this.createModel().update({ _id: id }, data);
             return transaction;
         }catch(error){
             console.log("error ",error)
@@ -73,10 +71,8 @@ class Repository
 
     async delete(id){
         try{
-            let transaction = this.createModel().destroy({
-                where: {
-                    id : id
-                }
+            let transaction = await this.createModel().remove({
+                _id : id
             })
             return transaction;
         }catch(error){
@@ -85,6 +81,4 @@ class Repository
     }
 
 }
-
-
-module.exports = Repository;
+export default Repository

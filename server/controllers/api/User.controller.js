@@ -1,5 +1,5 @@
-var BaseController = require('../Base.controller')
-var UserRepository = require('../../repositories/User.repository')
+import BaseController from '../Base.controller'
+import UserRepository from '../../repositories/User.repository'
 
 class UsersController extends BaseController{
     constructor(){
@@ -7,4 +7,4 @@ class UsersController extends BaseController{
     }
 }
 
-module.exports = UsersController;
+export default UsersController;

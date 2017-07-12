@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	/**
 	 * Check if the field is blank.
 	 *

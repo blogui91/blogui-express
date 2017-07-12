@@ -1,24 +1,28 @@
 import Nuxt from 'nuxt'
 import express from 'express'
 
-//Models
-//var Database = require('./models');
-
+import mongoose from 'mongoose';
+mongoose.Promise = global.Promise;
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 //Routes
 
 import api from './routes/api'
-//var users = require('./routes/users');
-//var posts = require('./routes/posts');
 
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 app.set('port', port)
 // Import API Routes
 app.use('/api', api)
-// app.use('/api', users)
-// app.use('/api', posts)
 
 // Start nuxt.js
 async function start () {
@@ -27,16 +31,22 @@ async function start () {
   config.dev = !(process.env.NODE_ENV === 'production')
 
   try {
-    // let connection = Database.sequelize.sync()
     // Instanciate nuxt.js
     const nuxt = new Nuxt(config)
+    try {
+      mongoose.connect('mongodb://localhost/test');
+      console.log('connection succesful')
 
-    // Add nuxt.js middleware
-    app.use(nuxt.render)
-    // Listen the server
-    app.listen(port, host)
-    app.on('error', onError)
-    app.on('listening', onListening)
+      // Add nuxt.js middleware
+      app.use(nuxt.render)
+      // Listen the server
+      app.listen(port, host)
+      app.on('error', onError)
+      app.on('listening', onListening)
+
+    } catch (error) {
+      console.error(error)
+    }
   } catch (error) {
     console.error('Server runtime error', error)
   }

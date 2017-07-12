@@ -1,10 +1,8 @@
-var BaseController = require('../Base.controller')
-var PostRepository = require('../../repositories/Post.repository')
-
+import BaseController from '../Base.controller'
+import PostRepository from '../../repositories/Post.repository'
 class PostsController extends BaseController{
     constructor(){
-        super(new PostRepository());
+        super(new PostRepository())
     }
 }
-
-module.exports = PostsController;
+export default PostsController

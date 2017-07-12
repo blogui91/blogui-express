@@ -1,10 +1,11 @@
-let BaseRepository = require('./Base.repository');
-let PostValidator = require('../validators/Post.validator')
-class PostRepository extends BaseRepository
-{
-    constructor(){
-        super('posts', PostValidator)
-    }
+import BaseRepository from './Base.repository'
+import PostValidator from '../validators/Post.validator'
+import PostModel from '../models/post'
+
+class PostRepository extends BaseRepository {
+  constructor () {
+    super(PostModel, PostValidator)
+  }
 }
 
-module.exports = PostRepository
+export default PostRepository

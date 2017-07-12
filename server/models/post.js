@@ -1,17 +1,20 @@
- import caminte from 'caminte'
-
-let Schema = caminte.Schema;
-
-var schema = {
+ 'use strict'
+ import mongoose from 'mongoose'
+ let Schema = mongoose.Schema
+ let PostSchema = {
     title : {
-        type : DataTypes.STRING,
-        allowNull : false,
+        type : String,
+        required : true,
     },
-    description : {
-        type : DataTypes.STRING,
-        unique : true,
+    description: {
+        type: String,
+        required : true,
     },
-    user_id : {
-        type : DataTypes.INTEGER
+    user_id: {
+        type : Number,
+        required : false
     }
-  }
+ }
+
+ export default mongoose.model('Post', PostSchema, 'posts')
+ 

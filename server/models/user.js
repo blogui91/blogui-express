@@ -1,19 +1,30 @@
 'use strict';
-let user = {
-    first_name : DataTypes.STRING,
-    last_name  : DataTypes.STRING,
+
+import mongoose from 'mongoose';
+let Schema = mongoose.Schema;
+let UserSchema = {
+    first_name : {
+        type : String,
+        required : true,
+    },
+    last_name  : {
+        type : String,
+        required : true,
+    },
     email : {
-          type : DataTypes.STRING,
-          unique : true,
-          allowNull : false,
+        type : String,
+        unique : true,
+        required : true,
     },
     password : {
-        type : DataTypes.STRING,
+    type : String,
 
     },
-    avatar : DataTypes.STRING,
+    avatar : String,
     enabled : {
-        type : DataTypes.BOOLEAN,
+        type : Boolean,
         defaultValue : true
     }
-};
+}
+
+export default mongoose.model('User', UserSchema, 'users')

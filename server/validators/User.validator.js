@@ -1,4 +1,4 @@
-let Validator = require('./base/validator.js');
+import Validator  from './base/validator.js';
 
 class UserValidator extends Validator
 {
@@ -37,4 +37,4 @@ class UserValidator extends Validator
     }
 }
 
-module.exports = UserValidator;
+export default UserValidator;

@@ -1,4 +1,4 @@
-let Validator = require('./base/validator.js');
+import Validator from './base/validator.js';
 
 class PostValidator extends Validator
 {
@@ -36,4 +36,4 @@ class PostValidator extends Validator
     }
 }
 
-module.exports = PostValidator;
+export default PostValidator;
