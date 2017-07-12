@@ -1,32 +1,21 @@
 <template>
+  <!--Ignore this file -->
   <section class="container">
     <img src="../assets/img/logo.png" alt="Nuxt.js Logo" class="logo">
-    <h1 class="title">
-      USERS
-    </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" :key="user.id" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.first_name }}
-        </nuxt-link>
-      </li>
+    <h1 class="title" v-text="title"></h1>
     </ul>
   </section>
 </template>
-
 <script>
-import axios from '~plugins/axios'
-
 export default {
   async asyncData () {
-    let { data } = await axios.get('/api/users')
     return {
-      users: data
+      users: []
     }
   },
   head () {
     return {
-      title: 'Users'
+      title: 'Welcome'
     }
   }
 }

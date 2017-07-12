@@ -5,9 +5,10 @@
       User
     </h1>
     <h2 class="info">
-      {{ user.name }}
+      {{ user.first_name }}
+      {{ user.last_name }}
     </h2>
-    <nuxt-link class="button" to="/">
+    <nuxt-link class="button" :to="{ name: 'users'}">
       Users
     </nuxt-link>
   </section>
@@ -15,7 +16,6 @@
 
 <script>
 import axios from '~plugins/axios'
-
 export default {
   name: 'user_id',
   asyncData ({ params, error }) {

@@ -62,7 +62,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,278 +73,23 @@ module.exports = require("express");
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nuxt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mongoose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes_api__ = __webpack_require__(6);
+module.exports = __webpack_require__(7);
 
-
-// Start nuxt.js
-var start = function () {
-  var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var config, nuxt;
-    return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            // Import and Set Nuxt.js options
-            config = __webpack_require__(4);
-
-            config.dev = !("development" === 'production');
-
-            try {
-              // Instanciate nuxt.js
-              nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt___default.a(config);
-
-              try {
-                __WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.connect('mongodb://localhost/test');
-                console.log('connection succesful');
-
-                // Add nuxt.js middleware
-                app.use(nuxt.render);
-                // Listen the server
-                app.listen(port, host);
-                app.on('error', onError);
-                app.on('listening', onListening);
-              } catch (error) {
-                console.error(error);
-              }
-            } catch (error) {
-              console.error('Server runtime error', error);
-            }
-
-          case 3:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function start() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.Promise = global.Promise;
-var favicon = __webpack_require__(21);
-var logger = __webpack_require__(22);
-var cookieParser = __webpack_require__(23);
-var bodyParser = __webpack_require__(24);
-//Routes
-
-
-
-var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
-var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || 3000;
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.set('port', port);
-// Import API Routes
-app.use('/api', __WEBPACK_IMPORTED_MODULE_4__routes_api__["a" /* default */]);
-
-start();
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-  console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
-}
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(3);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("regenerator-runtime");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: 'starter',
-    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  /*
-  ** Global CSS
-  */
-  css: ['~assets/css/main.css'],
-  /*
-  ** Add axios globally
-  */
-  build: {
-    vendor: ['axios'],
-    /*
-    ** Run ESLINT on save
-    */
-    extend: function extend(config, ctx) {
-      if (ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        });
-      }
-    }
-  }
-};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("nuxt");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts__ = __webpack_require__(31);
-
-
-
-
-
-var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
-
-// Add USERS Routes
-router.use(__WEBPACK_IMPORTED_MODULE_1__users__["a" /* default */]);
-router.use(__WEBPACK_IMPORTED_MODULE_2__posts__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (router);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__ = __webpack_require__(12);
-
-
-var Route = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
-var UsersController = new __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__["a" /* default */]();
-Route.get('/users/', UsersController.index);
-Route.post('/users/', UsersController.create);
-Route.get('/users/:id', UsersController.find);
-Route.put('/users/:id', UsersController.update);
-Route.delete('/users/:id', UsersController.delete);
-
-/* harmony default export */ __webpack_exports__["a"] = (Route);
-
-/***/ }),
-/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("mongoose");
 
 /***/ }),
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__ = __webpack_require__(14);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-var UsersController = function (_BaseController) {
-    _inherits(UsersController, _BaseController);
-
-    function UsersController() {
-        _classCallCheck(this, UsersController);
-
-        return _possibleConstructorReturn(this, (UsersController.__proto__ || Object.getPrototypeOf(UsersController)).call(this, new __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__["a" /* default */]()));
-    }
-
-    return UsersController;
-}(__WEBPACK_IMPORTED_MODULE_0__Base_controller__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (UsersController);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
 
 
@@ -580,43 +325,11 @@ var BaseController = function () {
 /* harmony default export */ __webpack_exports__["a"] = (BaseController);
 
 /***/ }),
-/* 14 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_user__ = __webpack_require__(20);
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var UserRepository = function (_BaseRepository) {
-    _inherits(UserRepository, _BaseRepository);
-
-    function UserRepository() {
-        _classCallCheck(this, UserRepository);
-
-        return _possibleConstructorReturn(this, (UserRepository.__proto__ || Object.getPrototypeOf(UserRepository)).call(this, __WEBPACK_IMPORTED_MODULE_2__models_user__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__["a" /* default */]));
-    }
-
-    return UserRepository;
-}(__WEBPACK_IMPORTED_MODULE_0__Base_repository__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (UserRepository);
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
 
 
@@ -864,69 +577,7 @@ var Repository = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Repository);
 
 /***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(17);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var UserValidator = function (_Validator) {
-    _inherits(UserValidator, _Validator);
-
-    function UserValidator(data) {
-        _classCallCheck(this, UserValidator);
-
-        var _this = _possibleConstructorReturn(this, (UserValidator.__proto__ || Object.getPrototypeOf(UserValidator)).call(this));
-
-        _this.rules = {
-            last_name: 'required',
-            first_name: 'required',
-            email: 'email'
-        };
-
-        _this.messages = {
-            last_name: {
-                required: 'Es campo apellido es requerido'
-            }
-        };
-
-        _this.data = data;
-        _this.extend({
-            empty: function empty(value) {
-                value = value ? value.toString() : null;
-                return value == null || value.length == 0 || value.trim() == '';
-            }
-        });
-
-        return _this;
-    }
-
-    _createClass(UserValidator, null, [{
-        key: 'make',
-        value: function make() {
-            var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-            var validate = new UserValidator(data);
-            return validate.exec();
-        }
-    }]);
-
-    return UserValidator;
-}(__WEBPACK_IMPORTED_MODULE_0__base_validator_js__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (UserValidator);
-
-/***/ }),
-/* 17 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -939,8 +590,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *	(c) 2017 by Cesar Santana 
  */
 
-var Helpers = __webpack_require__(18);
-var messages_default = __webpack_require__(19);
+var Helpers = __webpack_require__(19);
+var messages_default = __webpack_require__(20);
 
 var Validator = function () {
 	/**
@@ -1182,7 +833,377 @@ var Validator = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Validator);
 
 /***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nuxt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mongoose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes_api__ = __webpack_require__(14);
+
+
+// Start nuxt.js
+var start = function () {
+  var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
+    var config, nuxt;
+    return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            // Import and Set Nuxt.js options
+            config = __webpack_require__(8);
+
+            config.dev = !("development" === 'production');
+
+            try {
+              // Instanciate nuxt.js
+              nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt___default.a(config);
+
+              try {
+                __WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.connect('mongodb://localhost/test');
+                console.log('connection succesful');
+
+                // Add nuxt.js middleware
+                app.use(nuxt.render);
+                // Listen the server
+                app.listen(port, host);
+                app.on('error', onError);
+                app.on('listening', onListening);
+              } catch (error) {
+                console.error(error);
+              }
+            } catch (error) {
+              console.error('Server runtime error', error);
+            }
+
+          case 3:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function start() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.Promise = global.Promise;
+var favicon = __webpack_require__(10);
+var logger = __webpack_require__(11);
+var cookieParser = __webpack_require__(12);
+var bodyParser = __webpack_require__(13);
+//Routes
+
+
+
+var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
+var host = process.env.HOST || '127.0.0.1';
+var port = process.env.PORT || 3000;
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.set('port', port);
+// Import API Routes
+app.use('/api', __WEBPACK_IMPORTED_MODULE_4__routes_api__["a" /* default */]);
+
+start();
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+  console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
+}
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("regenerator-runtime");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'starter',
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  /*
+  ** Global CSS
+  */
+  css: ['~assets/css/main.css'],
+  /*
+  ** Add axios globally
+  */
+  build: {
+    vendor: ['axios'],
+    /*
+    ** Run ESLINT on save
+    */
+    extend: function extend(config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        });
+      }
+    }
+  }
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("nuxt");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("serve-favicon");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("morgan");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("cookie-parser");
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts__ = __webpack_require__(22);
+
+
+
+
+
+var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
+
+// Add USERS Routes
+router.use(__WEBPACK_IMPORTED_MODULE_1__users__["a" /* default */]);
+router.use(__WEBPACK_IMPORTED_MODULE_2__posts__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (router);
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__ = __webpack_require__(16);
+
+
+var Route = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
+var UsersController = new __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__["a" /* default */]();
+Route.get('/users/', UsersController.index);
+Route.post('/users/', UsersController.create);
+Route.get('/users/:id', UsersController.find);
+Route.put('/users/:id', UsersController.update);
+Route.delete('/users/:id', UsersController.delete);
+
+/* harmony default export */ __webpack_exports__["a"] = (Route);
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__ = __webpack_require__(17);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var UsersController = function (_BaseController) {
+    _inherits(UsersController, _BaseController);
+
+    function UsersController() {
+        _classCallCheck(this, UsersController);
+
+        return _possibleConstructorReturn(this, (UsersController.__proto__ || Object.getPrototypeOf(UsersController)).call(this, new __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__["a" /* default */]()));
+    }
+
+    return UsersController;
+}(__WEBPACK_IMPORTED_MODULE_0__Base_controller__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (UsersController);
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_user__ = __webpack_require__(21);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var UserRepository = function (_BaseRepository) {
+    _inherits(UserRepository, _BaseRepository);
+
+    function UserRepository() {
+        _classCallCheck(this, UserRepository);
+
+        return _possibleConstructorReturn(this, (UserRepository.__proto__ || Object.getPrototypeOf(UserRepository)).call(this, __WEBPACK_IMPORTED_MODULE_2__models_user__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__["a" /* default */]));
+    }
+
+    return UserRepository;
+}(__WEBPACK_IMPORTED_MODULE_0__Base_repository__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (UserRepository);
+
+/***/ }),
 /* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(5);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var UserValidator = function (_Validator) {
+    _inherits(UserValidator, _Validator);
+
+    function UserValidator(data) {
+        _classCallCheck(this, UserValidator);
+
+        var _this = _possibleConstructorReturn(this, (UserValidator.__proto__ || Object.getPrototypeOf(UserValidator)).call(this));
+
+        _this.rules = {
+            last_name: 'required',
+            first_name: 'required',
+            email: 'email'
+        };
+
+        _this.messages = {
+            last_name: {
+                required: 'Es campo apellido es requerido'
+            }
+        };
+
+        _this.data = data;
+        _this.extend({
+            empty: function empty(value) {
+                value = value ? value.toString() : null;
+                return value == null || value.length == 0 || value.trim() == '';
+            }
+        });
+
+        return _this;
+    }
+
+    _createClass(UserValidator, null, [{
+        key: 'make',
+        value: function make() {
+            var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var validate = new UserValidator(data);
+            return validate.exec();
+        }
+    }]);
+
+    return UserValidator;
+}(__WEBPACK_IMPORTED_MODULE_0__base_validator_js__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (UserValidator);
+
+/***/ }),
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1270,7 +1291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1282,11 +1303,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongoose__);
 
 
@@ -1320,37 +1341,31 @@ var UserSchema = {
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('User', UserSchema, 'users'));
 
 /***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-module.exports = require("serve-favicon");
-
-/***/ }),
 /* 22 */
-/***/ (function(module, exports) {
-
-module.exports = require("morgan");
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-module.exports = require("cookie-parser");
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-module.exports = require("body-parser");
-
-/***/ }),
-/* 25 */,
-/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__ = __webpack_require__(23);
+
+var express = __webpack_require__(0);
+var Route = express.Router();
+var PostsController = new __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__["a" /* default */]();
+
+Route.get('/posts/', PostsController.index);
+Route.post('/posts/', PostsController.create);
+Route.get('/posts/:id', PostsController.find);
+Route.put('/posts/:id', PostsController.update);
+Route.delete('/posts/:id', PostsController.delete);
+
+/* harmony default export */ __webpack_exports__["a"] = (Route);
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__ = __webpack_require__(24);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1375,13 +1390,13 @@ var PostsController = function (_BaseController) {
 /* harmony default export */ __webpack_exports__["a"] = (PostsController);
 
 /***/ }),
-/* 27 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_Post_validator__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_post__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_Post_validator__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_post__ = __webpack_require__(26);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1407,11 +1422,11 @@ var PostRepository = function (_BaseRepository) {
 /* harmony default export */ __webpack_exports__["a"] = (PostRepository);
 
 /***/ }),
-/* 28 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(5);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1468,11 +1483,11 @@ var PostValidator = function (_Validator) {
 /* harmony default export */ __webpack_exports__["a"] = (PostValidator);
 
 /***/ }),
-/* 29 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongoose__);
 
 
@@ -1494,26 +1509,6 @@ var PostSchema = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('Post', PostSchema, 'posts'));
-
-/***/ }),
-/* 30 */,
-/* 31 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__ = __webpack_require__(26);
-
-var express = __webpack_require__(0);
-var Route = express.Router();
-var PostsController = new __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__["a" /* default */]();
-
-Route.get('/posts/', PostsController.index);
-Route.post('/posts/', PostsController.create);
-Route.get('/posts/:id', PostsController.find);
-Route.put('/posts/:id', PostsController.update);
-Route.delete('/posts/:id', PostsController.delete);
-
-/* harmony default export */ __webpack_exports__["a"] = (Route);
 
 /***/ })
 /******/ ]);
