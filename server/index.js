@@ -1,29 +1,23 @@
 import Nuxt from 'nuxt'
 import express from 'express'
+import api from './routes/api'
 
-import mongoose from 'mongoose';
-mongoose.Promise = global.Promise;
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//Routes
-
-import api from './routes/api'
-
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 app.set('port', port)
 // Import API Routes
 app.use('/api', api)
-
+ 
 // Start nuxt.js
 async function start () {
   // Import and Set Nuxt.js options
@@ -34,11 +28,9 @@ async function start () {
     // Instanciate nuxt.js
     const nuxt = new Nuxt(config)
     try {
-      mongoose.connect('mongodb://localhost/test');
-      console.log('connection succesful')
-
       // Add nuxt.js middleware
       app.use(nuxt.render)
+
       // Listen the server
       app.listen(port, host)
       app.on('error', onError)

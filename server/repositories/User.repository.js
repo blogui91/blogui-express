@@ -1,6 +1,6 @@
 import BaseRepository from './Base.repository'
 import UserValidator from '../validators/User.validator'
-import UserModel from '../models/user'
+import UserModel from '../models/UserModel'
 
 class UserRepository extends BaseRepository
 {

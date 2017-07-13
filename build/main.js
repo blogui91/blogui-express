@@ -62,34 +62,310 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
+/* 0 */,
+/* 1 */,
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nuxt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_express__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_api__ = __webpack_require__(24);
+
+
+// Start nuxt.js
+var start = function () {
+  var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
+    var config, nuxt;
+    return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            // Import and Set Nuxt.js options
+            config = __webpack_require__(5);
+
+            config.dev = !("development" === 'production');
+
+            try {
+              // Instanciate nuxt.js
+              nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt___default.a(config);
+
+              try {
+                // Add nuxt.js middleware
+                app.use(nuxt.render);
+
+                // Listen the server
+                app.listen(port, host);
+                app.on('error', onError);
+                app.on('listening', onListening);
+              } catch (error) {
+                console.error(error);
+              }
+            } catch (error) {
+              console.error('Server runtime error', error);
+            }
+
+          case 3:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, this);
+  }));
+
+  return function start() {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+
+
+
+
+var favicon = __webpack_require__(15);
+var logger = __webpack_require__(16);
+var cookieParser = __webpack_require__(17);
+var bodyParser = __webpack_require__(18);
+var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
+var host = process.env.HOST || '127.0.0.1';
+var port = process.env.PORT || 3000;
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+app.set('port', port);
+// Import API Routes
+app.use('/api', __WEBPACK_IMPORTED_MODULE_3__routes_api__["a" /* default */]);
+
+start();
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+  console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
+}
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("regenerator-runtime");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'starter',
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  /*
+  ** Global CSS
+  */
+  css: ['~assets/css/main.css'],
+  /*
+  ** Add axios globally
+  */
+  build: {
+    vendor: ['axios'],
+    /*
+    ** Run ESLINT on save
+    */
+    extend: function extend(config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        });
+      }
+    }
+  }
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("nuxt");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(7);
-
-
-/***/ }),
-/* 2 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("mongoose");
 
 /***/ }),
-/* 3 */
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("caminte");
+
+/***/ }),
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("serve-favicon");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("morgan");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("cookie-parser");
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return schema; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__config__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_caminte__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_caminte___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_caminte__);
+
+
+var Schema = __WEBPACK_IMPORTED_MODULE_1_caminte___default.a.Schema;
+var database = __WEBPACK_IMPORTED_MODULE_0__config___default.a["development" || 'dev'];
+var db = void 0;
+try {
+  db = new Schema(database.driver, database);
+} catch (error) {
+  console.log('Error connection to Database: ', error);
+}
+
+var schema = db;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+/**
+ *  Default database configuration file
+ *
+ *  Created by create caminte-cli script
+ *  App based on CaminteJS
+ *  CaminteJS homepage http://www.camintejs.com
+ *
+ *  docs: https://github.com/biggora/caminte/wiki/Connecting-to-DB#connecting
+ **/
+
+module.exports.production = {
+    driver: 'mysql',
+    host: 'localhost',
+    port: '3306',
+    username: 'test',
+    password: 'test',
+    database: 'test',
+    autoReconnect: true
+};
+
+module.exports.development = {
+    driver: 'mysql',
+    host: 'localhost',
+    port: '3306',
+    username: 'root',
+    password: 'root',
+    database: 'mydb',
+    autoReconnect: true
+};
+
+module.exports.test = {
+    driver: 'mysql',
+    host: 'localhost',
+    port: '3306',
+    username: 'test',
+    password: 'test',
+    database: 'test',
+    autoReconnect: true
+};
+
+module.exports.dev = module.exports.development;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
 
 
@@ -287,28 +563,25 @@ var BaseController = function () {
                         switch (_context5.prev = _context5.next) {
                             case 0:
                                 body = request.body;
-
-
-                                console.log(request.body);
-                                _context5.prev = 2;
-                                _context5.next = 5;
+                                _context5.prev = 1;
+                                _context5.next = 4;
                                 return this.repository.create(body);
 
-                            case 5:
+                            case 4:
                                 operation = _context5.sent;
-                                return _context5.abrupt("return", response.status(202).json(operation));
+                                return _context5.abrupt("return", response.status(202).json(operation.resource));
 
-                            case 9:
-                                _context5.prev = 9;
-                                _context5.t0 = _context5["catch"](2);
+                            case 8:
+                                _context5.prev = 8;
+                                _context5.t0 = _context5["catch"](1);
                                 return _context5.abrupt("return", response.status(500).json(_context5.t0));
 
-                            case 12:
+                            case 11:
                             case "end":
                                 return _context5.stop();
                         }
                     }
-                }, _callee5, this, [[2, 9]]);
+                }, _callee5, this, [[1, 8]]);
             }));
 
             function create(_x9, _x10) {
@@ -325,11 +598,11 @@ var BaseController = function () {
 /* harmony default export */ __webpack_exports__["a"] = (BaseController);
 
 /***/ }),
-/* 4 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
 
 
@@ -340,244 +613,272 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Repository = function () {
-    function Repository(model, validator) {
-        _classCallCheck(this, Repository);
+  function Repository(model, validator) {
+    _classCallCheck(this, Repository);
 
-        this.model = model;
-        this.validator = validator;
+    this.model = model;
+    this.validator = validator;
+  }
+
+  _createClass(Repository, [{
+    key: "createModel",
+    value: function createModel() {
+      return this.model;
     }
+  }, {
+    key: "createAndFill",
+    value: function createAndFill(body) {
+      return new this.model(body);
+    }
+  }, {
+    key: "create",
+    value: function () {
+      var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(body) {
+        var validator, response, self, transaction;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                validator = this.validator.make(body);
+                response = {
+                  validator: validator,
+                  resource: null
+                };
 
-    _createClass(Repository, [{
-        key: "createModel",
-        value: function createModel() {
-            return this.model;
-        }
-    }, {
-        key: "createAndFill",
-        value: function createAndFill(body) {
-            return new this.model(body);
-        }
-    }, {
-        key: "create",
-        value: function () {
-            var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(body) {
-                var validator, response, resource, transaction;
-                return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                validator = this.validator.make(body);
-                                response = {
-                                    validator: validator,
-                                    resource: null
-                                };
+                if (!validator.passes()) {
+                  _context.next = 16;
+                  break;
+                }
 
-                                if (!validator.passes()) {
-                                    _context.next = 17;
-                                    break;
-                                }
-
-                                _context.prev = 3;
-                                resource = this.createAndFill(body);
-
-                                console.log("Resource:   ", body);
-                                //let transaction = await this.createModel().create(body)
-                                _context.next = 8;
-                                return resource.save();
-
-                            case 8:
-                                transaction = _context.sent;
-
-                                response.resource = transaction;
-                                return _context.abrupt("return", response);
-
-                            case 13:
-                                _context.prev = 13;
-                                _context.t0 = _context["catch"](3);
-
-                                console.log(_context.t0);
-                                return _context.abrupt("return", _context.t0);
-
-                            case 17:
-                                return _context.abrupt("return", response);
-
-                            case 18:
-                            case "end":
-                                return _context.stop();
-                        }
+                self = this;
+                _context.prev = 4;
+                _context.next = 7;
+                return new Promise(function (resolve, reject) {
+                  self.createModel().create(body, function (err, newResource) {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve(newResource);
                     }
-                }, _callee, this, [[3, 13]]);
-            }));
+                  });
+                });
 
-            function create(_x) {
-                return _ref.apply(this, arguments);
+              case 7:
+                transaction = _context.sent;
+
+                response.resource = transaction;
+                return _context.abrupt("return", response);
+
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](4);
+
+                console.log(_context.t0);
+                return _context.abrupt("return", _context.t0);
+
+              case 16:
+                return _context.abrupt("return", response);
+
+              case 17:
+              case "end":
+                return _context.stop();
             }
+          }
+        }, _callee, this, [[4, 12]]);
+      }));
 
-            return create;
-        }()
-    }, {
-        key: "find",
-        value: function () {
-            var _ref2 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(id) {
-                var query;
-                return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
-                    while (1) {
-                        switch (_context2.prev = _context2.next) {
-                            case 0:
-                                _context2.prev = 0;
-                                _context2.next = 3;
-                                return this.createModel().findOne({
-                                    _id: id
-                                });
+      function create(_x) {
+        return _ref.apply(this, arguments);
+      }
 
-                            case 3:
-                                query = _context2.sent;
-                                return _context2.abrupt("return", query);
+      return create;
+    }()
+  }, {
+    key: "find",
+    value: function () {
+      var _ref2 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(id) {
+        var query;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return this.createModel().findById(id);
 
-                            case 7:
-                                _context2.prev = 7;
-                                _context2.t0 = _context2["catch"](0);
+              case 3:
+                query = _context2.sent;
+                return _context2.abrupt("return", query);
 
-                                console.log("error ", _context2.t0);
-                                throw _context2.t0;
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
 
-                            case 11:
-                            case "end":
-                                return _context2.stop();
-                        }
+                console.log("error ", _context2.t0);
+                throw _context2.t0;
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 7]]);
+      }));
+
+      function find(_x2) {
+        return _ref2.apply(this, arguments);
+      }
+
+      return find;
+    }()
+  }, {
+    key: "findAll",
+    value: function () {
+      var _ref3 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3() {
+        var self, query;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                self = this;
+                _context3.prev = 1;
+                _context3.next = 4;
+                return new Promise(function (resolve, reject) {
+                  self.createModel().all(function (err, list) {
+                    if (err) {
+                      reject(err);
+                    } else {
+                      resolve(list);
                     }
-                }, _callee2, this, [[0, 7]]);
-            }));
+                  });
+                });
 
-            function find(_x2) {
-                return _ref2.apply(this, arguments);
+              case 4:
+                query = _context3.sent;
+                return _context3.abrupt("return", query);
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](1);
+
+                console.log("error! ", _context3.t0);
+                throw _context3.t0;
+
+              case 12:
+              case "end":
+                return _context3.stop();
             }
+          }
+        }, _callee3, this, [[1, 8]]);
+      }));
 
-            return find;
-        }()
-    }, {
-        key: "findAll",
-        value: function () {
-            var _ref3 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3() {
-                var query;
-                return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
-                    while (1) {
-                        switch (_context3.prev = _context3.next) {
-                            case 0:
-                                _context3.prev = 0;
-                                _context3.next = 3;
-                                return this.createModel().find({});
+      function findAll() {
+        return _ref3.apply(this, arguments);
+      }
 
-                            case 3:
-                                query = _context3.sent;
-                                return _context3.abrupt("return", query);
+      return findAll;
+    }()
+  }, {
+    key: "update",
+    value: function () {
+      var _ref4 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4(id, data) {
+        var _this = this;
 
-                            case 7:
-                                _context3.prev = 7;
-                                _context3.t0 = _context3["catch"](0);
-
-                                console.log(_context3.t0);
-                                throw _context3.t0;
-
-                            case 11:
-                            case "end":
-                                return _context3.stop();
-                        }
+        var self, transaction;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                self = this;
+                _context4.prev = 1;
+                _context4.next = 4;
+                return new Promise(function (resolve, reject) {
+                  _this.createModel().update({
+                    where: {
+                      id: id
                     }
-                }, _callee3, this, [[0, 7]]);
-            }));
+                  }, data, function (err, resource) {
+                    if (err) reject(err);else resolve(resource);
+                  });
+                });
 
-            function findAll() {
-                return _ref3.apply(this, arguments);
+              case 4:
+                transaction = _context4.sent;
+                return _context4.abrupt("return", transaction);
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](1);
+
+                console.log("error ", _context4.t0);
+                throw _context4.t0;
+
+              case 12:
+              case "end":
+                return _context4.stop();
             }
+          }
+        }, _callee4, this, [[1, 8]]);
+      }));
 
-            return findAll;
-        }()
-    }, {
-        key: "update",
-        value: function () {
-            var _ref4 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee4(id, data) {
-                var transaction;
-                return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
-                    while (1) {
-                        switch (_context4.prev = _context4.next) {
-                            case 0:
-                                _context4.prev = 0;
-                                _context4.next = 3;
-                                return this.createModel().update({ _id: id }, data);
+      function update(_x3, _x4) {
+        return _ref4.apply(this, arguments);
+      }
 
-                            case 3:
-                                transaction = _context4.sent;
-                                return _context4.abrupt("return", transaction);
+      return update;
+    }()
+  }, {
+    key: "delete",
+    value: function () {
+      var _ref5 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee5(id) {
+        var self, transaction;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                self = this;
+                _context5.prev = 1;
+                _context5.next = 4;
+                return new Promise(function (resolve, reject) {
+                  self.createModel().destroyById(id, function (err, resource) {
+                    if (err) reject(err);else resolve({
+                      deleted: true
+                    });
+                  });
+                });
 
-                            case 7:
-                                _context4.prev = 7;
-                                _context4.t0 = _context4["catch"](0);
+              case 4:
+                transaction = _context5.sent;
+                return _context5.abrupt("return", transaction);
 
-                                console.log("error ", _context4.t0);
-                                throw _context4.t0;
+              case 8:
+                _context5.prev = 8;
+                _context5.t0 = _context5["catch"](1);
+                return _context5.abrupt("return", _context5.t0);
 
-                            case 11:
-                            case "end":
-                                return _context4.stop();
-                        }
-                    }
-                }, _callee4, this, [[0, 7]]);
-            }));
-
-            function update(_x3, _x4) {
-                return _ref4.apply(this, arguments);
+              case 11:
+              case "end":
+                return _context5.stop();
             }
+          }
+        }, _callee5, this, [[1, 8]]);
+      }));
 
-            return update;
-        }()
-    }, {
-        key: "delete",
-        value: function () {
-            var _ref5 = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee5(id) {
-                var transaction;
-                return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
-                    while (1) {
-                        switch (_context5.prev = _context5.next) {
-                            case 0:
-                                _context5.prev = 0;
-                                _context5.next = 3;
-                                return this.createModel().remove({
-                                    _id: id
-                                });
+      function _delete(_x5) {
+        return _ref5.apply(this, arguments);
+      }
 
-                            case 3:
-                                transaction = _context5.sent;
-                                return _context5.abrupt("return", transaction);
+      return _delete;
+    }()
+  }]);
 
-                            case 7:
-                                _context5.prev = 7;
-                                _context5.t0 = _context5["catch"](0);
-                                return _context5.abrupt("return", _context5.t0);
-
-                            case 10:
-                            case "end":
-                                return _context5.stop();
-                        }
-                    }
-                }, _callee5, this, [[0, 7]]);
-            }));
-
-            function _delete(_x5) {
-                return _ref5.apply(this, arguments);
-            }
-
-            return _delete;
-        }()
-    }]);
-
-    return Repository;
+  return Repository;
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = (Repository);
 
 /***/ }),
-/* 5 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -590,8 +891,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *	(c) 2017 by Cesar Santana 
  */
 
-var Helpers = __webpack_require__(19);
-var messages_default = __webpack_require__(20);
+var Helpers = __webpack_require__(29);
+var messages_default = __webpack_require__(30);
 
 var Validator = function () {
 	/**
@@ -833,218 +1134,14 @@ var Validator = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Validator);
 
 /***/ }),
-/* 6 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nuxt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mongoose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__routes_api__ = __webpack_require__(14);
-
-
-// Start nuxt.js
-var start = function () {
-  var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee() {
-    var config, nuxt;
-    return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            // Import and Set Nuxt.js options
-            config = __webpack_require__(8);
-
-            config.dev = !("development" === 'production');
-
-            try {
-              // Instanciate nuxt.js
-              nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt___default.a(config);
-
-              try {
-                __WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.connect('mongodb://localhost/test');
-                console.log('connection succesful');
-
-                // Add nuxt.js middleware
-                app.use(nuxt.render);
-                // Listen the server
-                app.listen(port, host);
-                app.on('error', onError);
-                app.on('listening', onListening);
-              } catch (error) {
-                console.error(error);
-              }
-            } catch (error) {
-              console.error('Server runtime error', error);
-            }
-
-          case 3:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, this);
-  }));
-
-  return function start() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-
-
-
-
-__WEBPACK_IMPORTED_MODULE_3_mongoose___default.a.Promise = global.Promise;
-var favicon = __webpack_require__(10);
-var logger = __webpack_require__(11);
-var cookieParser = __webpack_require__(12);
-var bodyParser = __webpack_require__(13);
-//Routes
-
-
-
-var app = __WEBPACK_IMPORTED_MODULE_2_express___default()();
-var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || 3000;
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.set('port', port);
-// Import API Routes
-app.use('/api', __WEBPACK_IMPORTED_MODULE_4__routes_api__["a" /* default */]);
-
-start();
-/**
- * Event listener for HTTP server "error" event.
- */
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
- */
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-  console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
-}
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("regenerator-runtime");
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: 'starter',
-    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  /*
-  ** Global CSS
-  */
-  css: ['~assets/css/main.css'],
-  /*
-  ** Add axios globally
-  */
-  build: {
-    vendor: ['axios'],
-    /*
-    ** Run ESLINT on save
-    */
-    extend: function extend(config, ctx) {
-      if (ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        });
-      }
-    }
-  }
-};
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = require("nuxt");
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("serve-favicon");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("morgan");
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-module.exports = require("cookie-parser");
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-module.exports = require("body-parser");
-
-/***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__posts__ = __webpack_require__(32);
 
 
 
@@ -1059,13 +1156,13 @@ router.use(__WEBPACK_IMPORTED_MODULE_2__posts__["a" /* default */]);
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 15 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controllers_api_User_controller__ = __webpack_require__(26);
 
 
 var Route = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
@@ -1079,12 +1176,12 @@ Route.delete('/users/:id', UsersController.delete);
 /* harmony default export */ __webpack_exports__["a"] = (Route);
 
 /***/ }),
-/* 16 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_User_repository__ = __webpack_require__(27);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1109,13 +1206,13 @@ var UsersController = function (_BaseController) {
 /* harmony default export */ __webpack_exports__["a"] = (UsersController);
 
 /***/ }),
-/* 17 */
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_user__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_UserModel__ = __webpack_require__(37);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1132,7 +1229,7 @@ var UserRepository = function (_BaseRepository) {
     function UserRepository() {
         _classCallCheck(this, UserRepository);
 
-        return _possibleConstructorReturn(this, (UserRepository.__proto__ || Object.getPrototypeOf(UserRepository)).call(this, __WEBPACK_IMPORTED_MODULE_2__models_user__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__["a" /* default */]));
+        return _possibleConstructorReturn(this, (UserRepository.__proto__ || Object.getPrototypeOf(UserRepository)).call(this, __WEBPACK_IMPORTED_MODULE_2__models_UserModel__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__validators_User_validator__["a" /* default */]));
     }
 
     return UserRepository;
@@ -1141,11 +1238,11 @@ var UserRepository = function (_BaseRepository) {
 /* harmony default export */ __webpack_exports__["a"] = (UserRepository);
 
 /***/ }),
-/* 18 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(23);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1203,7 +1300,7 @@ var UserValidator = function (_Validator) {
 /* harmony default export */ __webpack_exports__["a"] = (UserValidator);
 
 /***/ }),
-/* 19 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1291,7 +1388,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 20 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1303,53 +1400,76 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 21 */
+/* 31 */,
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongoose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controllers_api_Posts_controller__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_UserModel__ = __webpack_require__(37);
 
 
+var _this = this;
 
-var Schema = __WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.Schema;
-var UserSchema = {
-    first_name: {
-        type: String,
-        required: true
-    },
-    last_name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        unique: true,
-        required: true
-    },
-    password: {
-        type: String
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-    },
-    avatar: String,
-    enabled: {
-        type: Boolean,
-        defaultValue: true
-    }
-};
 
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('User', UserSchema, 'users'));
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__ = __webpack_require__(23);
-
-var express = __webpack_require__(0);
+var express = __webpack_require__(7);
 var Route = express.Router();
-var PostsController = new __WEBPACK_IMPORTED_MODULE_0__controllers_api_Posts_controller__["a" /* default */]();
+var PostsController = new __WEBPACK_IMPORTED_MODULE_1__controllers_api_Posts_controller__["a" /* default */]();
+
+
+Route.get('/test/', function () {
+    var _ref = _asyncToGenerator(__WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(req, res) {
+        var a;
+        return __WEBPACK_IMPORTED_MODULE_0__home_blogui91_Documents_personal_projects_blogui_express_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+            while (1) {
+                switch (_context.prev = _context.next) {
+                    case 0:
+                        _context.prev = 0;
+                        _context.next = 3;
+                        return __WEBPACK_IMPORTED_MODULE_2__models_UserModel__["a" /* default */].findById(2);
+
+                    case 3:
+                        a = _context.sent;
+
+                        res.status(200).json(a);
+                        _context.next = 11;
+                        break;
+
+                    case 7:
+                        _context.prev = 7;
+                        _context.t0 = _context['catch'](0);
+
+                        console.log(_context.t0);
+                        res.status(500).json({
+                            error: "Error!"
+                        });
+
+                    case 11:
+                    case 'end':
+                        return _context.stop();
+                }
+            }
+        }, _callee, _this, [[0, 7]]);
+    }));
+
+    return function (_x, _x2) {
+        return _ref.apply(this, arguments);
+    };
+}()
+
+// User.findById(2, function(err, user){
+//     console.log(user)
+//     if(user){
+//         res.status(200).json({
+//             user
+//         })
+//     }
+// })
+);
 
 Route.get('/posts/', PostsController.index);
 Route.post('/posts/', PostsController.create);
@@ -1360,12 +1480,12 @@ Route.delete('/posts/:id', PostsController.delete);
 /* harmony default export */ __webpack_exports__["a"] = (Route);
 
 /***/ }),
-/* 23 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_controller__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__ = __webpack_require__(34);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1376,27 +1496,27 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var PostsController = function (_BaseController) {
-    _inherits(PostsController, _BaseController);
+  _inherits(PostsController, _BaseController);
 
-    function PostsController() {
-        _classCallCheck(this, PostsController);
+  function PostsController() {
+    _classCallCheck(this, PostsController);
 
-        return _possibleConstructorReturn(this, (PostsController.__proto__ || Object.getPrototypeOf(PostsController)).call(this, new __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__["a" /* default */]()));
-    }
+    return _possibleConstructorReturn(this, (PostsController.__proto__ || Object.getPrototypeOf(PostsController)).call(this, new __WEBPACK_IMPORTED_MODULE_1__repositories_Post_repository__["a" /* default */]()));
+  }
 
-    return PostsController;
+  return PostsController;
 }(__WEBPACK_IMPORTED_MODULE_0__Base_controller__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (PostsController);
 
 /***/ }),
-/* 24 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_Post_validator__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_post__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Base_repository__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validators_Post_validator__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_post__ = __webpack_require__(36);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -1422,11 +1542,11 @@ var PostRepository = function (_BaseRepository) {
 /* harmony default export */ __webpack_exports__["a"] = (PostRepository);
 
 /***/ }),
-/* 25 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_validator_js__ = __webpack_require__(23);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1483,11 +1603,11 @@ var PostValidator = function (_Validator) {
 /* harmony default export */ __webpack_exports__["a"] = (PostValidator);
 
 /***/ }),
-/* 26 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mongoose__);
 
 
@@ -1509,6 +1629,54 @@ var PostSchema = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('Post', PostSchema, 'posts'));
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__database_connection__ = __webpack_require__(19);
+/**
+ *  User schema
+ *
+ *  Created by create caminte-cli script
+ *  App based on CaminteJS
+ *  CaminteJS homepage http://www.camintejs.com
+ **/
+
+/**
+ *  Define User Model
+ *  @param {Object} schema
+ *  @return {Object}
+ **/
+
+
+var User = __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].define('users', {
+  id: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].Number },
+  active: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].Number },
+  first_name: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].String },
+  last_name: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].String },
+  email: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].String, unique: true },
+  password: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].String },
+  created_at: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].Date },
+  updated_at: { type: __WEBPACK_IMPORTED_MODULE_0__database_connection__["a" /* schema */].Date }
+}, {
+  primaryKeys: ['id']
+});
+
+User.afterUpdate = function (next) {
+  this.updated_at = new Date();
+  this.save();
+  next();
+};
+
+User.afterCreate = function (next) {
+  this.created_at = new Date();
+  this.updated_at = new Date();
+  this.save();
+  next();
+};
+/* harmony default export */ __webpack_exports__["a"] = (User);
 
 /***/ })
 /******/ ]);

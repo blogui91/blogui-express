@@ -14,34 +14,40 @@ class Repository
     }
 
     async create(body){
-        let validator = this.validator.make(body);
-        let response = {
-            validator : validator,
-            resource : null
-        }
-        if(validator.passes()){
-            try{
-                let resource = this.createAndFill(body);
-                console.log("Resource:   ", body)
-                //let transaction = await this.createModel().create(body)
-                let transaction = await resource.save();
-                response.resource = transaction
-                return response
-            }catch(error){
-                console.log(error)
-                return error
-            }
-        }
-        
-        return response
+      let validator = this.validator.make(body);
+      let response = {
+          validator : validator,
+          resource : null
+      }
+      if (validator.passes()) {
+        let self = this
+          try {
+            //let resource = this.createAndFill(body);
+            //let transaction = await this.createModel().create(body)
+            let transaction = await new Promise((resolve, reject) => {
+              self.createModel().create(body, (err, newResource) =>{
+                if(err){
+                  reject(err)
+                }else{
+                  resolve(newResource)
+                }
+              })
+            })
+            response.resource = transaction
+            return response
+          }catch(error){
+            console.log(error)
+            return error
+          }
+      }
+      
+      return response
         
     }
 
     async find(id){
         try {
-            let query = await this.createModel().findOne({
-                 _id: id
-            });
+            let query = await this.createModel().findById(id);
             return query
         }catch(error){
             console.log("error ",error)
@@ -50,29 +56,54 @@ class Repository
     }
 
     async findAll(){
-        try {
-            let query = await this.createModel().find({ });
-            return query
-        }catch(error){
-            console.log(error)
-            throw error
-        }
+      let self = this
+      try {
+        let query = await new Promise( (resolve, reject) =>{
+          self.createModel().all((err, list) =>{
+            if(err){
+              reject(err)
+            }else{
+              resolve(list)
+            }
+          })
+        })
+        return query
+      } catch (error) {
+        console.log("error! ",error)
+        throw error
+      }
     }
 
-    async update(id, data){
-        try{
-            let transaction = await this.createModel().update({ _id: id }, data);
-            return transaction;
-        }catch(error){
-            console.log("error ",error)
-            throw error
-        }
+    async update(id, data) {
+      let self = this
+      try {
+          let transaction = await new Promise((resolve, reject) => {
+            this.createModel().update({
+              where: {
+                id: id
+              }
+            }, data, (err, resource) => {
+              if (err) reject(err)
+              else resolve(resource)
+            })
+          })
+        return transaction
+      } catch (error) {
+          console.log("error ",error)
+          throw error
+      }
     }
 
     async delete(id){
+      let self = this;
         try{
-            let transaction = await this.createModel().remove({
-                _id : id
+            let transaction = await new Promise((resolve, reject) =>{
+                self.createModel().destroyById(id,(err, resource) => {
+                  if(err) reject(err)
+                  else resolve({
+                    deleted : true
+                  })
+                })
             })
             return transaction;
         }catch(error){
