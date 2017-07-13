@@ -53,11 +53,9 @@ class BaseController
 
     async create(request , response){
         let body = request.body
-
-        console.log(request.body)
         try{
             let operation = await this.repository.create(body);
-            return response.status(202).json(operation)     
+            return response.status(202).json(operation.resource)     
         }catch(error){
             return response.status(500).json(error)     
         }
