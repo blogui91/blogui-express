@@ -83,6 +83,7 @@ class Repository
                 id: id
               }
             }, data, (err, resource) => {
+              console.log(resource, err)
               if (err) reject(err)
               else resolve(resource)
             })
